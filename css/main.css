@@ -19,8 +19,16 @@ header ul {
 	display: none;
 }
 
+.main_page {
+
+}
+
 .container {
 	background-color: green;
 	border-radius: 10px;
 	padding: 5px;
+	display: none;
+	width: 85%;
+	height: auto;
+	margin: auto;
 }
