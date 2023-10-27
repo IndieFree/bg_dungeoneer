@@ -2,8 +2,11 @@ window.onload = function() {
 	var langList = ["RU", "ENG"];
 	var config = {
 		lang: "RU",
-		showMode: "off"
+		showMode: "off",
+		section: "mp_aboutGame"
 	};
+
+	$('#mp_aboutGame').show();
 
 	$('header').on('click', function(){
 		if (config.showMode == "off") {
