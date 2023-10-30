@@ -8,7 +8,7 @@ header {
    width: 100%;
    height: 5vh;
    background: #3C3D41;
-   box-shadow: 3px 3px 1px rgba(0, 0, 0, .05);
+   box-shadow: 3px 3px 1px rgba(0, 0, 0, .75);
    padding: 15px 0;
    margin-bottom: 5px;
    position: relative;
@@ -17,6 +17,16 @@ header {
 
 header ul {
 	display: none;
+	/*color: #9932CC;*/
+	color: #00BFFF;
+	
+   text-transform: uppercase;
+   list-style: none;
+}
+
+body {
+   background: url(../img/bg.jpeg);
+   background-size: cover;
 }
 
 .main_page {
@@ -24,11 +34,14 @@ header ul {
 }
 
 .container {
-	background-color: green;
+	background-color: white;
 	border-radius: 10px;
 	padding: 5px;
+	padding-left: 8px;
+	padding-right: 8px;
 	display: none;
-	width: 85%;
+	width: 95%;
 	height: auto;
 	margin: auto;
+	box-shadow: 3px 3px 1px rgba(0, 0, 0, .75);
 }
