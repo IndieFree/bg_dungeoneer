@@ -58,3 +58,27 @@ body {
 	background-color: PowderBlue;
 	border-radius: 5px;
 }
+
+#mp_helper ul {
+	list-style: none;
+}
+
+#mp_helper ul b {
+	text-transform: uppercase;
+	background-color: #9932CC;
+	color: white;
+	border-radius: 5px;
+	padding-left: 2px;
+}
+
+.card_helper {
+	background: url(../img/card_help_1.jpeg) no-repeat;
+    background-size: contain;
+    /*max-width: 80vh;*/
+	height: 90vh;
+	display: block;
+	border-radius: 20px;
+	/*margin: auto;*/
+    margin-left: 10vh;
+    margin-right: 10vh;
+}
