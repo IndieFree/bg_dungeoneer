@@ -70,5 +70,29 @@ window.onload = function() {
 		add_hideAll_MP($('#mp_heroes'));
 	});
 
+	console.log("mDATA");
+	console.log(mDATA.hero);
+	console.log(mDATA.hero.length);
+	for (var i = mDATA.hero.length - 1; i >= 0; i--) {
+		let newOption = new Option(mDATA.hero[i].name, mDATA.hero[i].id);
+  		document.getElementById('heroes').append(newOption);
+		
+	};	
+
+	function handleHeroChange() {
+		console.log($('#heroes'));
+    	// let selectElement = document.getElementById('heroes');
+    	// let selectedHero = selectElement.value;
+    	// let selectedHero = $('#heroes').value;
+    	// console.log('Вы выбрали: ' + selectedHero);
+    };
+
+    $('#heroes').change(function(){
+    	console.log('asddsa');
+    	handleHeroChange();
+    });
+    // $('heroes').change(handleHeroChange());
+
+    $('.heroSelect_button').on('click', handleHeroChange());
 
 };
