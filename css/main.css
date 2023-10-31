@@ -89,6 +89,11 @@ body {
    color: white;
 }
 
+#mp_heroes table {
+	border: 0;
+	width: 100%;
+}
+
 #heroSelect_button {
 	border-radius: 5px;
 	background-color: #3C3D41;
@@ -102,51 +107,37 @@ body {
 }
 
 .hero_face {
-	background-color: #00BFFF;
+	background: url(../img/face_7.jpeg) no-repeat;
+    background-size: contain;
+	background-color: #3C3D41;
 	border-radius: 15px;
-	width: 95%;
-	height: 75vh;
+	width: 49%;
+	/*height: auto;*/
 	/*padding-left: 10px;
 	padding-right: 10px;*/
-	margin-right: auto;
-	margin-left: auto;
+	margin: auto;
+	overflow: hidden;
+    position: relative;
+	padding-bottom: 50%; /* пропорции блока определяются здесь */
+    display: flex; 
+    justify-content: center; /* элемент центрируется */
 }
 
-.hero_face_name {
-	background: #3C3D41;
-	color: white;
-	border-radius: 10px;
-	padding: 5px;
-	position: fixed;
-	right: 10%;
-	margin-top: 5px;
-}
-
-.hero_face_spell {
-	background: #3C3D41;
-	opacity: 0.8;
-	color: white;
-	width: 70%;
-	border-radius: 5px;
-	position: fixed;
-	bottom: 10%;
-	left: 10%;
-	padding: 5px;
-}
-
-.hero_state_tab {
-	background: #3C3D41;
-	width: 100%;
-	height: 4vh;
-	border-radius: 5px;
-	display: flex;
-  	flex-direction: row;
-  	flex-wrap: nowrap;
+.hero_stat {
+	width: 49%;
 }
 
 .param_stat {
-	color: white;
-	/*padding-left: 5px;
-	padding-right: 5px;*/
-	margin: auto;
+	background: #3C3D41;
+   	color: white;
+   	border-radius: 5px;
+   	padding-left: 5px;
+   	padding-top: 2px;
+   	margin-bottom: 2px;
+}
+
+.hero_spell {
+	background: #3C3D41;
+   	color: white;
+   	border-radius: 5px;
 }
