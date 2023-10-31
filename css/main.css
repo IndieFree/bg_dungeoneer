@@ -63,6 +63,10 @@ body {
 	list-style: none;
 }
 
+#mp_helper li {
+	margin-bottom: 15px;
+}
+
 #mp_helper ul b {
 	text-transform: uppercase;
 	background-color: #9932CC;
@@ -112,9 +116,6 @@ body {
 	background-color: #3C3D41;
 	border-radius: 15px;
 	width: 49%;
-	/*height: auto;*/
-	/*padding-left: 10px;
-	padding-right: 10px;*/
 	margin: auto;
 	overflow: hidden;
     position: relative;
