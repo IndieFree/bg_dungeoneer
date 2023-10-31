@@ -19,9 +19,8 @@ header ul {
 	display: none;
 	/*color: #9932CC;*/
 	color: #00BFFF;
-	
-   text-transform: uppercase;
-   list-style: none;
+   	text-transform: uppercase;
+   	list-style: none;
 }
 
 body {
@@ -29,19 +28,33 @@ body {
    background-size: cover;
 }
 
-.main_page {
-
+#nav_header {
+	color: #00BFFF;
+	padding-left: 15px;
+	text-transform: uppercase;
+	font-size: 25px;
+	font-family: 'Playfair Display';
+    font-weight: normal;
+   	letter-spacing: 1px;
 }
 
 .container {
 	background-color: white;
 	border-radius: 10px;
-	padding: 5px;
 	padding-left: 8px;
 	padding-right: 8px;
+	padding-top: 12px;
+	padding-bottom: 12px;
 	display: none;
 	width: 95%;
+	font-size: 18px;
+	font-family: 'Playfair Display';
 	height: auto;
 	margin: auto;
-	box-shadow: 3px 3px 1px rgba(0, 0, 0, .75);
+	box-shadow: 3px 3px 1px rgba(0, .75, .75, .75);
+}
+
+.container i {
+	background-color: PowderBlue;
+	border-radius: 5px;
 }
