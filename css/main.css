@@ -111,17 +111,22 @@ body {
 }
 
 .hero_face {
-	background: url(../img/face_7.jpeg) no-repeat;
+	/*background: url(../img/face_7.jpeg) no-repeat;
     background-size: contain;
-	background-color: #3C3D41;
+	background-color: #3C3D41;*/
 	border-radius: 15px;
 	width: 49%;
 	margin: auto;
-	overflow: hidden;
+	/*overflow: hidden;
     position: relative;
-	padding-bottom: 50%; /* пропорции блока определяются здесь */
+	padding-bottom: 50%;  
     display: flex; 
     justify-content: center; /* элемент центрируется */
+}
+
+#hero_face_img {
+	max-width: 100%;
+	border-radius: 10px;
 }
 
 .hero_stat {
