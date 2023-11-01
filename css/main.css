@@ -142,3 +142,24 @@ body {
    	color: white;
    	border-radius: 5px;
 }
+
+.rules_part {
+	background-color: #3C3D41; 
+	border-radius: 10px;
+	padding-bottom: 5px;
+}
+
+.rules_part h2 {
+	color: #00BFFF;
+	padding-left: 10px;
+	padding-top: 3px;
+}
+
+.rules_part_content {
+	width: 97%;
+	background-color: white;
+	color: black;
+	margin: auto;
+	border-radius: 5px;
+	padding: 3px;
+}
