@@ -80,7 +80,8 @@ window.onload = function() {
 	};	
 
 	function handleHeroChange() {
-		console.log($('#heroes'));
+		let selectHeroId = $('#heroes').val();
+		console.log("selectHeroId:: " + selectHeroId);
     	// let selectElement = document.getElementById('heroes');
     	// let selectedHero = selectElement.value;
     	// let selectedHero = $('#heroes').value;
@@ -88,7 +89,6 @@ window.onload = function() {
     };
 
     $('#heroes').change(function(){
-    	console.log('asddsa');
     	handleHeroChange();
     });
     // $('heroes').change(handleHeroChange());
