@@ -70,23 +70,32 @@ window.onload = function() {
 		add_hideAll_MP($('#mp_heroes'));
 	});
 
-	console.log("mDATA");
-	console.log(mDATA.hero);
-	console.log(mDATA.hero.length);
-	for (var i = mDATA.hero.length - 1; i >= 0; i--) {
-		let newOption = new Option(mDATA.hero[i].name, mDATA.hero[i].id);
+	// console.log("mDATA");
+	// console.log(mDATA.hero);
+	// console.log(mDATA.hero.length);
+	function byField(fieldName) {
+		return (a, b) => a[fieldName] < b[fieldName] ? 1 : -1;
+	};
+
+	let heroSortList = mDATA.hero.sort(byField('name'));
+	for (var i = heroSortList.length - 1; i >= 0; i--) {
+		let newOption = new Option(heroSortList[i].name, heroSortList[i].id);
   		document.getElementById('heroes').append(newOption);
 		
 	};	
 
 	function handleHeroChange() {
 		let selectHeroId = $('#heroes').val();
-		console.log("selectHeroId:: " + selectHeroId);
-    	// let selectElement = document.getElementById('heroes');
-    	// let selectedHero = selectElement.value;
-    	// let selectedHero = $('#heroes').value;
-    	// console.log('Вы выбрали: ' + selectedHero);
-    };
+		let selectHeroData;
+		
+		for (var i = mDATA.hero.length - 1; i >= 0; i--) {
+			if (mDATA.hero[i].id == selectHeroId) {
+				selectHeroData = mDATA.hero[i];
+			};
+		};
+
+		 $("#hero_face_img").attr("src", ("./img/face_" + selectHeroId + ".jpeg"));
+	};
 
     $('#heroes').change(function(){
     	handleHeroChange();

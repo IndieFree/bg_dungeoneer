@@ -98,7 +98,7 @@ body {
 	width: 100%;
 }
 
-#heroSelect_button {
+/*#heroSelect_button {
 	border-radius: 5px;
 	background-color: #3C3D41;
 	border-color: #00BFFF;
@@ -108,7 +108,7 @@ body {
 	padding-right: 3px;
 	font-size: 18px;
 	font-family: 'Playfair Display';
-}
+}*/
 
 .hero_face {
 	/*background: url(../img/face_7.jpeg) no-repeat;
