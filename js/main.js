@@ -95,6 +95,18 @@ window.onload = function() {
 		};
 
 		 $("#hero_face_img").attr("src", ("./img/face_" + selectHeroId + ".jpeg"));
+		 let dopId = selectHeroData.dop;
+		 let str_val = selectHeroData.str;
+		 let mana_val = selectHeroData.mana;
+		 let agil_val = selectHeroData.agil;
+		 let race_val = selectHeroData.race;
+		 let spell_val = selectHeroData.spell;
+		 $(".hero_dopName").html("«"+ mDATA.dops[dopId] + "»");
+		 $("#hero_str").html("Сила: " + str_val[0] + " | " + str_val[1] + " | " + str_val[2] + " | " + str_val[3]);
+		 $("#hero_mana").html("Магия: " + mana_val[0] + " | " + mana_val[1] + " | " + mana_val[2] + " | " + mana_val[3]);
+		 $("#hero_agil").html("Ловкость: " + agil_val[0] + " | " + agil_val[1] + " | " + agil_val[2] + " | " + agil_val[3]);
+		 $(".hero_race").html(race_val[0] + " | " + race_val[1]);
+		 $(".hero_spell").html(spell_val);
 	};
 
     $('#heroes').change(function(){
