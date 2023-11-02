@@ -142,10 +142,26 @@ body {
    	margin-bottom: 2px;
 }
 
+.hero_race {
+	background: #3C3D41;
+   	color: white;
+	border-radius: 5px;
+	padding-left: 5px;
+}
+
+.hero_dopName {
+	background: #3C3D41;
+   	color: white;
+	border-radius: 5px;
+	text-align: right;
+	padding-right: 5px;
+}
+
 .hero_spell {
 	background: #3C3D41;
    	color: white;
    	border-radius: 5px;
+   	padding: 3px;
 }
 
 .rules_part {
