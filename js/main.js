@@ -70,9 +70,6 @@ window.onload = function() {
 		add_hideAll_MP($('#mp_heroes'));
 	});
 
-	// console.log("mDATA");
-	// console.log(mDATA.hero);
-	// console.log(mDATA.hero.length);
 	function byField(fieldName) {
 		return (a, b) => a[fieldName] < b[fieldName] ? 1 : -1;
 	};
@@ -116,4 +113,48 @@ window.onload = function() {
 
     $('.heroSelect_button').on('click', handleHeroChange());
 
+    // скрыть/показать раздел правил
+    function chngShowParamRulPart(targetVal){
+    	targetVal.show();
+    };
+
+	$("#rules_h_1").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_1"));
+	});
+	$("#rules_h_2").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_2"));
+	});
+	$("#rules_h_3").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_3"));
+	});
+	$("#rules_h_4").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_4"));
+	});
+	$("#rules_h_5").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_5"));
+	});
+	$("#rules_h_6").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_6"));
+	});
+	$("#rules_h_7").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_7"));
+	});
+	$("#rules_h_8").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_8"));
+	});
+	$("#rules_h_9").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_9"));
+	});
+	$("#rules_h_10").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_10"));
+	});
+	$("#rules_h_11").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_11"));
+	});
+	$("#rules_h_12").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_12"));
+	});
+	$("#rules_h_13").on('click', function() {
+		chngShowParamRulPart($("#rules_pc_13"));
+	});
 };
