@@ -94,16 +94,26 @@ window.onload = function() {
 		 $("#hero_face_img").attr("src", ("./img/face_" + selectHeroId + ".jpeg"));
 		 let dopId = selectHeroData.dop;
 		 let str_val = selectHeroData.str;
+		 for (var i = str_val.length - 1; i >= 0; i--) {
+		 	$("#hero_str_" + i).html(str_val[i]);
+		 };
 		 let mana_val = selectHeroData.mana;
+		 for (var i = mana_val.length - 1; i >= 0; i--) {
+		 	$("#hero_mana_" + i).html(mana_val[i]);
+		 };
 		 let agil_val = selectHeroData.agil;
+		 for (var i = agil_val.length - 1; i >= 0; i--) {
+		 	$("#hero_agil_" + i).html(agil_val[i]);
+		 };
 		 let race_val = selectHeroData.race;
 		 let spell_val = selectHeroData.spell;
+		 let limG_val = selectHeroData.limG;
+		 let limM_val = selectHeroData.limM;
 		 $(".hero_dopName").html("«"+ mDATA.dops[dopId] + "»");
-		 $("#hero_str").html("Сил.: " + str_val[0] + " | " + str_val[1] + " | " + str_val[2] + " | " + str_val[3]);
-		 $("#hero_mana").html("Маг.: " + mana_val[0] + " | " + mana_val[1] + " | " + mana_val[2] + " | " + mana_val[3]);
-		 $("#hero_agil").html("Лов.: " + agil_val[0] + " | " + agil_val[1] + " | " + agil_val[2] + " | " + agil_val[3]);
 		 $(".hero_race").html(race_val[0] + "<br>" + race_val[1]);
 		 $(".hero_spell").html(spell_val);
+		 $("#hero_slotG").html(limG_val);
+		 $("#hero_slotS").html(limM_val);							
 	};
 
     $('#heroes').change(function(){

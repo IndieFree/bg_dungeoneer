@@ -131,6 +131,7 @@ body {
 
 .hero_stat {
 	width: 49%;
+	height: 100%;
 }
 
 .param_stat {
@@ -140,6 +141,10 @@ body {
    	padding-left: 5px;
    	padding-top: 2px;
    	margin-bottom: 2px;
+}
+
+.param_stat td {
+	text-align: center;
 }
 
 .hero_race {
@@ -153,8 +158,7 @@ body {
 	background: #3C3D41;
    	color: white;
 	border-radius: 5px;
-	text-align: right;
-	padding-right: 5px;
+	padding-left: 3px;
 }
 
 .hero_spell {
@@ -183,4 +187,5 @@ body {
 	margin: auto;
 	border-radius: 5px;
 	padding: 3px;
+	display: none;
 }
