@@ -74,6 +74,7 @@ window.onload = function() {
 		return (a, b) => a[fieldName] < b[fieldName] ? 1 : -1;
 	};
 
+	// наполнение списка героев для выбора
 	let heroSortList = mDATA.hero.sort(byField('name'));
 	for (var i = heroSortList.length - 1; i >= 0; i--) {
 		let newOption = new Option(heroSortList[i].name, heroSortList[i].id);
@@ -91,43 +92,46 @@ window.onload = function() {
 			};
 		};
 
-		 $("#hero_face_img").attr("src", ("./img/face_" + selectHeroId + ".jpeg"));
-		 let dopId = selectHeroData.dop;
-		 let str_val = selectHeroData.str;
-		 for (var i = str_val.length - 1; i >= 0; i--) {
-		 	$("#hero_str_" + i).html(str_val[i]);
-		 };
-		 let mana_val = selectHeroData.mana;
-		 for (var i = mana_val.length - 1; i >= 0; i--) {
-		 	$("#hero_mana_" + i).html(mana_val[i]);
-		 };
-		 let agil_val = selectHeroData.agil;
-		 for (var i = agil_val.length - 1; i >= 0; i--) {
+		$("#hero_face_img").attr("src", ("./img/face_" + selectHeroId + ".jpeg"));
+		let dopId = selectHeroData.dop;
+		let str_val = selectHeroData.str;
+		for (var i = str_val.length - 1; i >= 0; i--) {
+			$("#hero_str_" + i).html(str_val[i]);
+		};
+		let mana_val = selectHeroData.mana;
+		for (var i = mana_val.length - 1; i >= 0; i--) {
+		  	$("#hero_mana_" + i).html(mana_val[i]);
+		};
+		let agil_val = selectHeroData.agil;
+		for (var i = agil_val.length - 1; i >= 0; i--) {
 		 	$("#hero_agil_" + i).html(agil_val[i]);
-		 };
-		 let race_val = selectHeroData.race;
-		 let spell_val = selectHeroData.spell;
-		 let limG_val = selectHeroData.limG;
-		 let limM_val = selectHeroData.limM;
-		 $(".hero_dopName").html("«"+ mDATA.dops[dopId] + "»");
-		 $(".hero_race").html(race_val[0] + "<br>" + race_val[1]);
-		 $(".hero_spell").html(spell_val);
-		 $("#hero_slotG").html(limG_val);
-		 $("#hero_slotS").html(limM_val);							
+		};
+		let race_val = selectHeroData.race;
+		let spell_val = selectHeroData.spell;
+		let limG_val = selectHeroData.limG;
+		let limM_val = selectHeroData.limM;
+		$(".hero_dopName").html("«"+ mDATA.dops[dopId] + "»");
+		$(".hero_race").html(race_val[0] + "<br>" + race_val[1]);
+		$(".hero_spell").html(spell_val);
+		$("#hero_slotG").html(limG_val);
+		$("#hero_slotS").html(limM_val);							
 	};
+
+	handleHeroChange();
 
     $('#heroes').change(function(){
     	handleHeroChange();
     });
+    
     // $('heroes').change(handleHeroChange());
-
-    $('.heroSelect_button').on('click', handleHeroChange());
+    // $('.heroSelect_button').on('click', handleHeroChange());
 
     // скрыть/показать раздел правил
     function chngShowParamRulPart(targetVal){
     	targetVal.show();
     };
 
+    // раскрытие блоков правил
 	$("#rules_h_1").on('click', function() {
 		chngShowParamRulPart($("#rules_pc_1"));
 	});
@@ -167,4 +171,83 @@ window.onload = function() {
 	$("#rules_h_13").on('click', function() {
 		chngShowParamRulPart($("#rules_pc_13"));
 	});
+
+	// наполняем форму выбора "дополнение" на странице просмотра заданий
+	let dopsDataList = [];
+	for (var i = Object.keys(mDATA.dops).length - 1; i >= 0; i--) {
+		dopsDataList[i] = {id: Object.keys(mDATA.dops)[i], name: mDATA.dops[Object.keys(mDATA.dops)[i]]};
+	};
+	let dopsSortList = dopsDataList.sort(byField('name'));
+	for (var i = dopsSortList.length - 1; i >= 0; i--) {
+		let newOption = new Option(dopsSortList[i].name, dopsSortList[i].id);
+  		document.getElementById('quests_dop').append(newOption);		
+	};	
+	
+	// функция выбора дополнения для задания
+	function handleQuestDopChange() {
+		$('#quests_name').empty();
+		let selectDopId = $('#quests_dop').val();
+    	let questsList = [];
+    	for (var i = mDATA.quest['d_' + selectDopId].length - 1; i >= 0; i--) {
+    		questsList[i] = {id: mDATA.quest['d_' + selectDopId][i].id, name: mDATA.quest['d_' + selectDopId][i].name};
+    	};
+    	let questsSortList = questsList.sort(byField('name'));
+    	for (var i = questsSortList.length - 1; i >= 0; i--) {
+    		let newOption = new Option(questsSortList[i].name, questsSortList[i].id);
+  			document.getElementById('quests_name').append(newOption);
+    	};
+	};
+
+	handleQuestDopChange();
+
+	// обрабатываем выбор дополнения
+	$('#quests_dop').change(function(){
+    	handleQuestDopChange();
+    });
+
+	// функция выбора задания
+    function handleQuestChange() {
+    	let selectQuestId = $('#quests_name').val();
+    	console.log('selectQuestId:: ' + selectQuestId);
+    	let dopId = $('#quests_dop').val()
+    	let questData = {};
+    	for (var i = mDATA.quest['d_' + dopId].length - 1; i >= 0; i--) {
+    		if (mDATA.quest['d_' + dopId][i].id == selectQuestId) {
+    			questData = mDATA.quest['d_' + dopId][i];
+    		};    		
+    	};
+    	console.log('questData');
+    	console.log(questData);
+    	$('#quests_category').html('Категория: «' + questData.category + '»');
+    	$('.quests_condition').html('<b>Описание:</b><p>' + questData.condition + '</p>');
+    	$("#quests_face_img").attr("src", ("./img/quest_" + selectQuestId + ".jpeg"));
+    	$('#quests_place').html(questData.location.join(' - '));
+    	let selectedMonster = questData.monster;
+    	console.log('selectedMonster');
+    	console.log(selectedMonster);
+    	if (selectedMonster !== null) {
+    		$('#quests_monster_name').html('<b>«' + selectedMonster.name + '»</b>');
+    		$('#quests_monster_class').html(selectedMonster.class.join(' / '));
+    		$('#quests_monster_hp').html('Здоровье: ' + selectedMonster.hp);
+    		$('#quests_monster_str').html(selectedMonster.str);
+			$('#quests_monster_mana').html(selectedMonster.mana);
+			$('#quests_monster_agil').html(selectedMonster.agil);
+    		$('.quests_monster').show();
+    	} else {
+    		$('.quests_monster').hide();
+    	};
+    	$('.quests_prize').html('<b>Награда:</b><ul><li>' + questData.prize.join ('</li><li>') + '</ul>');
+    };
+
+    handleQuestChange();
+
+    // обрабатываем выбор задания
+	$('#quests_name').change(function(){
+    	handleQuestChange();
+    });
+	
+
+	// $('#quests_dop').change(function(){
+ //    	handleQuestDopChange();
+ //    });
 };

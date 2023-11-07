@@ -464,12 +464,67 @@
 					</div>
 				</div>
 			</div>
+			<!-- Задания -->
 			<div class="container" id="mp_quest">
-				Задания
+				<table>
+					<tr>
+						<td colspan="2">
+							<form>
+								<label for="quests_dop">Дополнение: </label>
+								<select id="quests_dop" name="quests_dop"></select>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<form>
+								<label for="quests_name">Задание: </label>
+								<select id="quests_name" name="quests_name"></select>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="quests_face" colspan="2">
+							<img id="quests_face_img" src="./img/quest_2.jpeg">
+						</td>
+					</tr>
+					<tr class="quests_category">
+						<td colspan="2" align="center" id="quests_category">Категория: ???</td>
+					</tr>
+					<tr class="quests_location">
+						<td colspan="2" align="center" id="quests_place"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="quests_condition"><b>Описание:</b></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="quests_monster" id="quests_monster_name" align="center"></td>
+					</tr>
+					<tr>
+						<td class="quests_monster" id="quests_monster_class" align="center"></td>
+						<td class="quests_monster" id="quests_monster_hp" align="center"></td>
+					</tr>
+					<tr>
+						<td class="quests_monster" colspan="2">
+							<table>
+							<tr>
+								<td id="quests_monster_str" align="center"></td>
+								<td id="quests_monster_mana" align="center"></td>
+								<td id="quests_monster_agil" align="center"></td>
+							</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="quests_prize"><b>Награда:</b></td>
+					</tr>
+				</table>
 			</div>
+			<!-- Предметы -->
 			<div class="container" id="mp_goods">
 				Предметы
 			</div>
+			<!-- Герои -->
 			<div class="container" id="mp_heroes">
 				<table>
 					<tr>
@@ -523,11 +578,7 @@
 						<td class="hero_race">???</td>
 						<td class="hero_dopName">???</td>
 					</tr>
-					<tr>
-						<td colspan="2" class="hero_spell">
-							???
-						</td>
-					</tr>
+					<tr><td colspan="2" class="hero_spell">???</td></tr>
 				</table>				
 			</div>
 		</div>
