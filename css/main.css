@@ -111,17 +111,9 @@ body {
 }*/
 
 .hero_face {
-	/*background: url(../img/face_7.jpeg) no-repeat;
-    background-size: contain;
-	background-color: #3C3D41;*/
 	border-radius: 15px;
 	width: 49%;
 	margin: auto;
-	/*overflow: hidden;
-    position: relative;
-	padding-bottom: 50%;  
-    display: flex; 
-    justify-content: center; /* элемент центрируется */
 }
 
 #hero_face_img {
@@ -188,4 +180,74 @@ body {
 	border-radius: 5px;
 	padding: 3px;
 	display: none;
+}
+
+#mp_quest form {
+   padding: 3px;
+   border-radius: 5px;
+   background: #3C3D41;
+   color: white;
+}
+
+#mp_quest table {
+	border: 0;
+	width: 100%;
+}
+
+.quests_face {
+	border-radius: 15px;
+	width: 49%;
+	margin: auto;
+}
+
+.quests_category td{
+	padding: 3px;
+	border-radius: 5px;
+   	background: #3C3D41;
+   	color: white;
+}
+
+.quests_location td {
+	padding: 3px;
+	border-radius: 5px;
+   	background: #3C3D41;
+   	color: #00BFFF;
+}
+
+#quests_face_img {
+	max-width: 100%;
+	border-radius: 10px;
+}
+
+.quests_condition {
+	padding: 3px;
+	border-radius: 5px;
+   	background: #3C3D41;
+   	color: white;
+}
+
+.quests_monster {
+	padding: 3px;
+	border-radius: 5px;
+   	background: #3C3D41;
+   	color: red;	
+}
+
+#quests_monster_str {
+	color: red;
+}
+
+#quests_monster_mana {
+	color: #00BFFF;
+}
+
+#quests_monster_agil {
+	color: white;
+}
+
+.quests_prize {
+	padding: 3px;
+	border-radius: 5px;
+   	background: #3C3D41;
+   	color: white;
 }
