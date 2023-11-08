@@ -525,7 +525,52 @@
 			</div>
 			<!-- Предметы -->
 			<div class="container" id="mp_goods">
-				Предметы
+				<table>
+					<tr>
+						<td colspan="3">
+							<form>
+								<label for="goods_type">Тип: </label>
+								<select id="goods_type" name="goods_type"></select>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<form>
+								<label for="goods_select">Наименование: </label>
+								<select id="goods_select" name="goods_select"></select>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" colspan="3" id="goods_name">???<br><small>(???)</small></td>
+					</tr>
+					<tr>
+						<td align="center" id="goods_dop_name" colspan="3">Дополнение: ???</td>
+					</tr>
+					<tr>
+						<td class="goods_face" rowspan="4">
+							<img id="goods_face_img" src="./img/goods_1.jpeg">
+						</td>
+						<td align="center">Цена:</td>
+						<td align="center" id="goods_price">???</td>
+					</tr>
+					<tr>
+						<td align="center">Фаза:</td>
+						<td align="center" id="goods_phaze">???</td>
+					</tr>
+					<tr>
+						<td align="center">Тип:</td>
+						<td align="center">???</td>
+					</tr>
+					<tr>
+						<td align="center">Действие:</td>
+						<td align="center">???</td>
+					</tr>
+					<tr>
+						<td colspan="3" id="goods_text"></td>
+					</tr>
+				</table>
 			</div>
 			<!-- Герои -->
 			<div class="container" id="mp_heroes">
