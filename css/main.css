@@ -260,3 +260,26 @@ body {
    	background: #3C3D41;
    	color: white;
 }
+
+#mp_goods table {
+	border: 0;
+	width: 100%;
+}
+
+#mp_goods td {
+	padding: 3px;
+   	border-radius: 5px;
+   	background: #3C3D41;
+   	color: white;
+}
+
+#goods_name {
+	color: #00BFFF;
+}
+
+#mp_goods form {
+   padding: 3px;
+   border-radius: 5px;
+   background: #3C3D41;
+   color: white;
+}
