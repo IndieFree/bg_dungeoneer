@@ -233,6 +233,15 @@ body {
    	color: red;	
 }
 
+.quests_monster table {
+	background: white;
+}
+
+.quests_monster td {
+	background: #3C3D41;
+	color: white;
+}
+
 #quests_monster_str {
 	color: red;
 }
