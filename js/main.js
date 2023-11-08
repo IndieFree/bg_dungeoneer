@@ -208,16 +208,13 @@ window.onload = function() {
 	// функция выбора задания
     function handleQuestChange() {
     	let selectQuestId = $('#quests_name').val();
-    	console.log('selectQuestId:: ' + selectQuestId);
-    	let dopId = $('#quests_dop').val()
+    	let dopId = $('#quests_dop').val();
     	let questData = {};
     	for (var i = mDATA.quest['d_' + dopId].length - 1; i >= 0; i--) {
     		if (mDATA.quest['d_' + dopId][i].id == selectQuestId) {
     			questData = mDATA.quest['d_' + dopId][i];
     		};    		
     	};
-    	console.log('questData');
-    	console.log(questData);
     	$('#quests_category').html('Категория: «' + questData.category + '»');
     	$('.quests_condition').html('<b>Описание:</b><p>' + questData.condition + '</p>');
     	$("#quests_face_img").attr("src", ("./img/quest_" + selectQuestId + ".jpeg"));
@@ -246,8 +243,63 @@ window.onload = function() {
 	$('#quests_name').change(function(){
     	handleQuestChange();
     });
-	
 
+	// наполняем форму выбора "типа" предметов на странице просмотра предметов
+	let goodsTypeList = [];
+	for (var i = Object.keys(mDATA.goodsType).length - 1; i >= 0; i--) {
+		goodsTypeList[i] = {id: Object.keys(mDATA.goodsType)[i], name: mDATA.goodsType[Object.keys(mDATA.goodsType)[i]]};
+	};
+	let goodsTypeSortList = goodsTypeList.sort(byField('name'));
+	for (var i = goodsTypeSortList.length - 1; i >= 0; i--) {
+		let newOption = new Option(goodsTypeSortList[i].name, goodsTypeSortList[i].id);
+  		document.getElementById('goods_type').append(newOption);		
+	};
+
+	// функция выбора "типа" для предметов
+	function handleGoodsTypeChange() {
+		$('#goods_select').empty();
+		let selectGoodsTypeId = $('#goods_type').val();
+		let goodsList = [];
+		for (var i = mDATA.goods.length - 1; i >= 0; i--) {
+			goodsList[i] = {id: mDATA.goods[i].id, name: mDATA.goods[i].name};
+		};
+		let sortGoodsList = goodsList.sort(byField('name'));
+		for (var i = sortGoodsList.length - 1; i >= 0; i--) {
+			let newOption = new Option(sortGoodsList[i].name, sortGoodsList[i].id);
+			document.getElementById('goods_select').append(newOption);
+		};
+	};
+
+	handleGoodsTypeChange();
+
+	// обрабатываем выбор типа предмета
+    $('#goods_type').change(function(){
+    	handleGoodsTypeChange();
+    });
+	
+	// функция выбора предметов
+	function handleGoodsChange() {
+    	let selectGoodsId = $('#goods_select').val();
+    	let typeId = $('#goods_type').val();
+    	let goodsData = {};
+    	for (var i = mDATA.goods.length - 1; i >= 0; i--) {
+    		if (mDATA.goods[i].id == selectGoodsId) {
+    			goodsData = mDATA.goods[i];
+    		};    		
+    	};
+    	console.log('goodsData');
+    	console.log(goodsData);
+    	let goodsName = goodsData.name;
+    	$('#goods_name').html(goodsName + '<br><small>(' + mDATA.goodsType[typeId] + ')</small>');
+    	$('#goods_text').html(goodsData.text);
+	};
+
+	handleGoodsChange()
+
+	// обрабатываем выбор предмета
+    $('#goods_select').change(function(){
+    	handleGoodsChange();
+    });
 	// $('#quests_dop').change(function(){
  //    	handleQuestDopChange();
  //    });
