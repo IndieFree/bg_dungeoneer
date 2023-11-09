@@ -220,8 +220,6 @@ window.onload = function() {
     	$("#quests_face_img").attr("src", ("./img/quest_" + selectQuestId + ".jpeg"));
     	$('#quests_place').html(questData.location.join(' - '));
     	let selectedMonster = questData.monster;
-    	console.log('selectedMonster');
-    	console.log(selectedMonster);
     	if (selectedMonster !== null) {
     		$('#quests_monster_name').html('<b>«' + selectedMonster.name + '»</b>');
     		$('#quests_monster_class').html(selectedMonster.class.join(' / '));
@@ -287,11 +285,15 @@ window.onload = function() {
     			goodsData = mDATA.goods[i];
     		};    		
     	};
-    	console.log('goodsData');
-    	console.log(goodsData);
     	let goodsName = goodsData.name;
     	$('#goods_name').html(goodsName + '<br><small>(' + mDATA.goodsType[typeId] + ')</small>');
     	$('#goods_text').html(goodsData.text);
+    	$('#goods_face_img').attr("src", ("./img/goods_" + selectGoodsId + ".jpeg"));
+    	$('#goods_price').html(goodsData.price);
+    	$('#goods_phaze').html(goodsData.phaze);
+    	$('#goods_gtype').html(goodsData.gtype);
+    	$('#goods_duration').html(goodsData.duration);
+    	
 	};
 
 	handleGoodsChange()
