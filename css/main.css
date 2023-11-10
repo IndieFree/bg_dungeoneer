@@ -273,6 +273,16 @@ body {
    	color: white;
 }
 
+.goods_face {
+	width: 95vw;
+	height: 95vw;
+}
+
+#goods_face_img {
+	width: 100%;
+	border-radius: 10px;
+}
+
 #goods_name {
 	color: #00BFFF;
 }
