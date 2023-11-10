@@ -1,6 +1,12 @@
 var mDATA = mainData;
 
 window.onload = function() {
+	const MDops = mDATA.dops;
+	const MHero = mDATA.hero;
+	const MQuest = mDATA.quest;
+	const MGoods = mDATA.goods;
+	const MGoodsType = mDATA.goodsType;
+
 	var langList = ["RU", "ENG"];
 	var config = {
 		lang: "RU",
@@ -75,7 +81,7 @@ window.onload = function() {
 	};
 
 	// наполнение списка героев для выбора
-	let heroSortList = mDATA.hero.sort(byField('name'));
+	let heroSortList = MHero.sort(byField('name'));
 	for (var i = heroSortList.length - 1; i >= 0; i--) {
 		let newOption = new Option(heroSortList[i].name, heroSortList[i].id);
   		document.getElementById('heroes').append(newOption);
@@ -86,9 +92,9 @@ window.onload = function() {
 		let selectHeroId = $('#heroes').val();
 		let selectHeroData;
 		
-		for (var i = mDATA.hero.length - 1; i >= 0; i--) {
-			if (mDATA.hero[i].id == selectHeroId) {
-				selectHeroData = mDATA.hero[i];
+		for (var i = MHero.length - 1; i >= 0; i--) {
+			if (MHero[i].id == selectHeroId) {
+				selectHeroData = MHero[i];
 			};
 		};
 
@@ -110,7 +116,7 @@ window.onload = function() {
 		let spell_val = selectHeroData.spell;
 		let limG_val = selectHeroData.limG;
 		let limM_val = selectHeroData.limM;
-		$(".hero_dopName").html("«"+ mDATA.dops[dopId] + "»");
+		$(".hero_dopName").html("«"+ MDops[dopId] + "»");
 		$(".hero_race").html(race_val[0] + "<br>" + race_val[1]);
 		$(".hero_spell").html(spell_val);
 		$("#hero_slotG").html(limG_val);
@@ -174,8 +180,8 @@ window.onload = function() {
 
 	// наполняем форму выбора "дополнение" на странице просмотра заданий
 	let dopsDataList = [];
-	for (var i = Object.keys(mDATA.dops).length - 1; i >= 0; i--) {
-		dopsDataList[i] = {id: Object.keys(mDATA.dops)[i], name: mDATA.dops[Object.keys(mDATA.dops)[i]]};
+	for (var i = Object.keys(MDops).length - 1; i >= 0; i--) {
+		dopsDataList[i] = {id: Object.keys(MDops)[i], name: MDops[Object.keys(MDops)[i]]};
 	};
 	let dopsSortList = dopsDataList.sort(byField('name'));
 	for (var i = dopsSortList.length - 1; i >= 0; i--) {
@@ -188,8 +194,8 @@ window.onload = function() {
 		$('#quests_name').empty();
 		let selectDopId = $('#quests_dop').val();
     	let questsList = [];
-    	for (var i = mDATA.quest['d_' + selectDopId].length - 1; i >= 0; i--) {
-    		questsList[i] = {id: mDATA.quest['d_' + selectDopId][i].id, name: mDATA.quest['d_' + selectDopId][i].name};
+    	for (var i = MQuest['d_' + selectDopId].length - 1; i >= 0; i--) {
+    		questsList[i] = {id: MQuest['d_' + selectDopId][i].id, name: MQuest['d_' + selectDopId][i].name};
     	};
     	let questsSortList = questsList.sort(byField('name'));
     	for (var i = questsSortList.length - 1; i >= 0; i--) {
@@ -210,9 +216,9 @@ window.onload = function() {
     	let selectQuestId = $('#quests_name').val();
     	let dopId = $('#quests_dop').val();
     	let questData = {};
-    	for (var i = mDATA.quest['d_' + dopId].length - 1; i >= 0; i--) {
-    		if (mDATA.quest['d_' + dopId][i].id == selectQuestId) {
-    			questData = mDATA.quest['d_' + dopId][i];
+    	for (var i = MQuest['d_' + dopId].length - 1; i >= 0; i--) {
+    		if (MQuest['d_' + dopId][i].id == selectQuestId) {
+    			questData = MQuest['d_' + dopId][i];
     		};    		
     	};
     	$('#quests_category').html('Категория: «' + questData.category + '»');
@@ -244,8 +250,8 @@ window.onload = function() {
 
 	// наполняем форму выбора "типа" предметов на странице просмотра предметов
 	let goodsTypeList = [];
-	for (var i = Object.keys(mDATA.goodsType).length - 1; i >= 0; i--) {
-		goodsTypeList[i] = {id: Object.keys(mDATA.goodsType)[i], name: mDATA.goodsType[Object.keys(mDATA.goodsType)[i]]};
+	for (var i = Object.keys(MGoodsType).length - 1; i >= 0; i--) {
+		goodsTypeList[i] = {id: Object.keys(MGoodsType)[i], name: MGoodsType[Object.keys(MGoodsType)[i]]};
 	};
 	let goodsTypeSortList = goodsTypeList.sort(byField('name'));
 	for (var i = goodsTypeSortList.length - 1; i >= 0; i--) {
@@ -258,8 +264,8 @@ window.onload = function() {
 		$('#goods_select').empty();
 		let selectGoodsTypeId = $('#goods_type').val();
 		let goodsList = [];
-		for (var i = mDATA.goods.length - 1; i >= 0; i--) {
-			goodsList[i] = {id: mDATA.goods[i].id, name: mDATA.goods[i].name};
+		for (var i = MGoods.length - 1; i >= 0; i--) {
+			goodsList[i] = {id: MGoods[i].id, name: MGoods[i].name};
 		};
 		let sortGoodsList = goodsList.sort(byField('name'));
 		for (var i = sortGoodsList.length - 1; i >= 0; i--) {
@@ -280,13 +286,14 @@ window.onload = function() {
     	let selectGoodsId = $('#goods_select').val();
     	let typeId = $('#goods_type').val();
     	let goodsData = {};
-    	for (var i = mDATA.goods.length - 1; i >= 0; i--) {
-    		if (mDATA.goods[i].id == selectGoodsId) {
-    			goodsData = mDATA.goods[i];
+    	for (var i = MGoods.length - 1; i >= 0; i--) {
+    		if (MGoods[i].id == selectGoodsId) {
+    			goodsData = MGoods[i];
     		};    		
     	};
     	let goodsName = goodsData.name;
-    	$('#goods_name').html(goodsName + '<br><small>(' + mDATA.goodsType[typeId] + ')</small>');
+    	$('#goods_name').html(goodsName + '<br><small>(' + MGoodsType[typeId] + ')</small>');
+    	$('#goods_dop_name').html('Дополнение: «' + MDops[goodsData.dop] + '»');
     	$('#goods_text').html(goodsData.text);
     	$('#goods_face_img').attr("src", ("./img/goods_" + selectGoodsId + ".jpeg"));
     	$('#goods_price').html(goodsData.price);
