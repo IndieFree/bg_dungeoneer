@@ -227,12 +227,21 @@ window.onload = function() {
     	$('#quests_place').html(questData.location.join(' - '));
     	let selectedMonster = questData.monster;
     	if (selectedMonster !== null) {
+    		let attckType = selectedMonster.attck
+    		function attckPreor(arr, value) {
+    			for (var i = arr.length - 1; i >= 0; i--) {
+    				if (arr[i] === value) {
+    					return '🔴';
+    				};
+    			};
+    			return '💠';
+    		};
     		$('#quests_monster_name').html('<b>«' + selectedMonster.name + '»</b>');
     		$('#quests_monster_class').html(selectedMonster.class.join(' / '));
     		$('#quests_monster_hp').html('Здоровье: ' + selectedMonster.hp);
-    		$('#quests_monster_str').html('<b>Физ.</b><hr>' + selectedMonster.str);
-			$('#quests_monster_mana').html('<b>Маг.</b><hr>' + selectedMonster.mana);
-			$('#quests_monster_agil').html('<b>Скор.</b><hr>' + selectedMonster.agil);
+    		$('#quests_monster_str').html('<b>Физ.</b><hr>' + (attckPreor(attckType, "str")) + selectedMonster.str);
+			$('#quests_monster_mana').html('<b>Маг.</b><hr>' + (attckPreor(attckType, "mana")) + selectedMonster.mana);
+			$('#quests_monster_agil').html('<b>Скор.</b><hr>' + (attckPreor(attckType, "agil")) + selectedMonster.agil);
 			$("#quests_monster_text").html(selectedMonster.text);
     		$('.quests_monster').show();
     	} else {
