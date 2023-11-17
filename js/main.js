@@ -1,5 +1,10 @@
 var mDATA = mainData;
 
+function ShowLog(strVal, evalVal) {
+	console.log('' + strVal);
+	console.log(evalVal);
+};
+
 window.onload = function() {
 	const MDops = mDATA.dops;
 	const MHero = mDATA.hero;
@@ -178,43 +183,31 @@ window.onload = function() {
 		chngShowParamRulPart($("#rules_pc_13"));
 	});
 
-	// наполняем форму выбора "дополнение" на странице просмотра заданий
-	let dopsDataList = [];
-	for (var i = Object.keys(MDops).length - 1; i >= 0; i--) {
-		dopsDataList[i] = {id: Object.keys(MDops)[i], name: MDops[Object.keys(MDops)[i]]};
+	// наполняем форму выбора заданий
+	let questsKeyList = Object.keys(MQuest);
+	let questsPrepData = [];
+	for (var i = questsKeyList.length - 1; i >= 0; i--) {
+		questsPrepData[i] = {
+			id: questsKeyList[i],
+			name: MDops[((questsKeyList[i]).split('d_'))[1]],
+			qList: MQuest[questsKeyList[i]]
+		};
 	};
-	let dopsSortList = dopsDataList.sort(byField('name'));
-	for (var i = dopsSortList.length - 1; i >= 0; i--) {
-		let newOption = new Option(dopsSortList[i].name, dopsSortList[i].id);
-  		document.getElementById('quests_dop').append(newOption);		
-	};	
-	
-	// функция выбора дополнения для задания
-	function handleQuestDopChange() {
-		$('#quests_name').empty();
-		let selectDopId = $('#quests_dop').val();
-    	let questsList = [];
-    	for (var i = MQuest['d_' + selectDopId].length - 1; i >= 0; i--) {
-    		questsList[i] = {id: MQuest['d_' + selectDopId][i].id, name: MQuest['d_' + selectDopId][i].name};
-    	};
-    	let questsSortList = questsList.sort(byField('name'));
-    	for (var i = questsSortList.length - 1; i >= 0; i--) {
-    		let newOption = new Option(questsSortList[i].name, questsSortList[i].id);
-  			document.getElementById('quests_name').append(newOption);
-    	};
+	for (var i = questsPrepData.length - 1; i >= 0; i--) {
+		let newOptgrStart = '<optgroup label="' + questsPrepData[i].name + '">';
+		for (var j = (questsPrepData[i].qList).length - 1; j >= 0; j--) {
+			let qSortList = questsPrepData[i].qList.sort(byField('name'));
+			newOptgrStart += "<option value='" + qSortList[j].id + '_' + questsPrepData[i].id + "'>" + qSortList[j].name + "</option>";			
+		};
+		let newOptgrEnd = '</optgroup>';
+		$('#quests_name').append(jQuery(newOptgrStart), jQuery(newOptgrEnd));
 	};
-
-	handleQuestDopChange();
-
-	// обрабатываем выбор дополнения
-	$('#quests_dop').change(function(){
-    	handleQuestDopChange();
-    });
 
 	// функция выбора задания
     function handleQuestChange() {
-    	let selectQuestId = $('#quests_name').val();
-    	let dopId = $('#quests_dop').val();
+    	let selectQuestVal = $('#quests_name').val();
+    	let selectQuestId = selectQuestVal.split('_')[0];
+    	let dopId = selectQuestVal.split('_')[2];
     	let questData = {};
     	for (var i = MQuest['d_' + dopId].length - 1; i >= 0; i--) {
     		if (MQuest['d_' + dopId][i].id == selectQuestId) {
