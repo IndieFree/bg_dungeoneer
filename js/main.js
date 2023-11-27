@@ -321,12 +321,9 @@ window.onload = function() {
 
     // наполняем форму выбора локации
     let dopsKeyList = Object.keys(MDops);
-    ShowLog("dopsKeyList", dopsKeyList);
-    ShowLog("MLocations", MLocations);
     let locationsPrepData = [];
     for (var i = dopsKeyList.length - 1; i >= 0; i--) {
     	let localRes = [];
-    	ShowLog('localRes.length + 1', (localRes.length + 1));
     	for (var j = MLocations.length - 1; j >= 0; j--) {
     		if (MLocations[j].dop == dopsKeyList[i]) {
     			localRes[localRes.length] = MLocations[j];
@@ -338,12 +335,10 @@ window.onload = function() {
     		lList: localRes
     	};
     };
-    ShowLog('locationsPrepData', locationsPrepData);
     for (var i = locationsPrepData.length - 1; i >= 0; i--) {
     	let newOptgrStart = '<optgroup label="' + locationsPrepData[i].dopName + '">';
     	for (var j = (locationsPrepData[i].lList).length - 1; j >= 0; j--) {
     		let lSortList = locationsPrepData[i].lList.sort(byField('name'));
-    		ShowLog('asdasdasdasdasdasd', lSortList[j]);
     		newOptgrStart += "<option value='" + lSortList[j].id + "'>" + lSortList[j].name + "</option>";			
     	};
     	let newOptgrEnd = '</optgroup>';
