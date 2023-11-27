@@ -94,18 +94,6 @@ body {
 	width: 100%;
 }
 
-/*#heroSelect_button {
-	border-radius: 5px;
-	background-color: #3C3D41;
-	border-color: #00BFFF;
-	color: #00BFFF;
-	margin-left: 10px;
-	padding-left: 3px;
-	padding-right: 3px;
-	font-size: 18px;
-	font-family: 'Playfair Display';
-}*/
-
 .hero_face {
 	border-radius: 15px;
 	width: 49%;
@@ -288,4 +276,40 @@ body {
    border-radius: 5px;
    background: #3C3D41;
    color: white;
+}
+
+#mp_location form {
+   padding: 3px;
+   border-radius: 5px;
+   background: #3C3D41;
+   color: white;
+}
+
+#mp_location table {
+	border: 0;
+	width: 100%;
+}
+
+#mp_location td {
+	padding: 3px;
+   	border-radius: 5px;
+   	background: #3C3D41;
+   	/*color: white;*/
+}
+
+#location_face_img {
+	max-width: 100%;
+	border-radius: 10px;
+}
+
+.location_str_name, .location_text {
+	color: white;
+}
+
+.location_honor {
+	color: green;
+}
+
+.location_risk {
+	color: red;
 }

@@ -23,6 +23,8 @@
 					<li id="bttn_goods">Предметы</li>
 					<hr>
 					<li id="bttn_heroes">Герои</li>
+					<hr>
+					<li id="bttn_location">Локации</li>
 				</ul>
 			</nav>
 		</header>
@@ -472,8 +474,7 @@
 							<form>
 								<label for="quests_name">Выберите задание:</label>
 								<select id="quests_name" name="quests_name"></select>	
-							</form>
-							
+							</form>							
 						</td>
 					</tr>
 					<tr>
@@ -621,6 +622,36 @@
 					</tr>
 					<tr><td colspan="2" class="hero_spell">???</td></tr>
 				</table>				
+			</div>
+			<!-- Локации -->
+			<div class="container" id="mp_location">
+				<table>
+					<tr>
+						<td colspan="4">
+							<form>
+								<label for="location_name">Выберите локацию:</label>
+								<select id="location_name" name="location_name"></select>	
+							</form>		
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4" class="location_str_name" align="center"></td>
+					</tr>
+					<tr>
+						<td colspan="4" class="location_face">
+							<img id="location_face_img" src="./img/location_1.jpeg">
+						</td>
+					</tr>
+					<tr>
+						<td class="location_honor">Слава:</td>
+						<td class="location_honor" id="location_honor" align="center">0</td>
+						<td class="location_risk">Риск</td>
+						<td class="location_risk" id="location_risk" align="center">0</td>
+					</tr>
+					<tr>
+						<td colspan="4" class="location_text"></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<footer>
