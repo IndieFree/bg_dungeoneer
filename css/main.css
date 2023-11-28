@@ -17,7 +17,6 @@ header {
 
 header ul {
 	display: none;
-	/*color: #9932CC;*/
 	color: #00BFFF;
    	text-transform: uppercase;
    	list-style: none;
@@ -199,6 +198,7 @@ body {
 }
 
 #quests_face_img {
+	min-width: 100%;
 	max-width: 100%;
 	border-radius: 10px;
 }
@@ -294,15 +294,15 @@ body {
 	padding: 3px;
    	border-radius: 5px;
    	background: #3C3D41;
-   	/*color: white;*/
 }
 
 #location_face_img {
+	min-width: 100%;
 	max-width: 100%;
 	border-radius: 10px;
 }
 
-.location_str_name, .location_text {
+.location_str_name, .location_text, #location_type, #location_typeText {
 	color: white;
 }
 
