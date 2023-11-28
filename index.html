@@ -20,7 +20,9 @@
 					<hr>
 					<li id="bttn_quest">Задания</li>
 					<hr>
-					<li id="bttn_goods">Предметы</li>
+					<li id="bttn_goods">Сокровища</li>
+					<hr>
+					<li id="bttn_advantage">Преимущества</li>
 					<hr>
 					<li id="bttn_heroes">Герои</li>
 					<hr>
@@ -85,21 +87,7 @@
 				<div class="rules_part">
 					<h2 id="rules_h_2">Состав игры</h2>
 					<div class="rules_part_content" id="rules_pc_2">
-						<ul>
-							<li>22 карты локаций</li>
-							<li>60 карт приключений</li>
-							<li>14 карт заданий</li>
-							<li>4 карты счетчиков</li>
-							<li>4 двусторонние карты-памятки</li>
-							<li>6 карт героев</li>
-							<li>2 шестигранных кубика</li>
-							<li>4 накладки уровней</li>
-							<li>6 фишек героев с подставками</li>
-							<li>8 жетонов риска</li>
-							<li>8 жетонов славы</li>
-							<li>32 жетона здоровья (8 жетонов номиналом 3, 24 жетона номиналом 1)</li>
-							<li>8 жетонов слежения (4 пары)</li>
-							<li>Правила игры</li>
+						<ul id="bgcontent">
 						</ul>
 					</div>
 				</div>
@@ -517,7 +505,7 @@
 					</tr>
 				</table>
 			</div>
-			<!-- Предметы -->
+			<!-- Сокровища -->
 			<div class="container" id="mp_goods">
 				<table>
 					<tr>
@@ -563,6 +551,46 @@
 					</tr>
 					<tr>
 						<td colspan="3" id="goods_text"></td>
+					</tr>
+				</table>
+			</div>
+			<!-- Преимущества -->
+			<div class="container" id="mp_advantage">
+				<table>
+					<tr>
+						<td colspan="2">
+							<form>
+								<label for="advantage_name">Выберите преимущество:</label>
+								<select id="advantage_name" name="advantage_name"></select>	
+							</form>							
+						</td>
+					</tr>
+					<tr>
+						<td class="advantage_strName" colspan="2" align="center"></td>
+					</tr>
+					<tr>
+						<td class="advantage_face" colspan="2">
+							<img id="advantage_face_img" src="./img/advant_1.jpeg">
+						</td>
+					</tr>
+					<tr>
+						<td class="advantage_price">Цена:</td>
+						<td id="advantage_priceVal" align="center">0</td>
+					</tr>
+					<tr>
+						<td class="advantage_phaze">Фаза:</td>
+						<td id="advantage_phazeVal" align="center">-</td>
+					</tr>
+					<tr>
+						<td class="advantage_gtype">Тип:</td>
+						<td id="advantage_gtypeVal" align="center">-</td>
+					</tr>
+					<tr>
+						<td class="advantage_duration">Действие:</td>
+						<td id="advantage_durationVal" align="center">-</td>
+					</tr>
+					<tr>
+						<td class="advantage_text" colspan="2"></td>
 					</tr>
 				</table>
 			</div>

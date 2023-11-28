@@ -1,5 +1,5 @@
 "use strict";
-var mDATA = mainData;
+let mDATA = mainData;
 
 function ShowLog(strVal, evalVal) {
 	console.log('' + strVal);
@@ -11,10 +11,11 @@ window.onload = function() {
 	const MHERO = mDATA.hero;
 	const MQUEST = mDATA.quest;
 	const MGOODS = mDATA.goods;
+	const MADVANTAGE = mDATA.advantage;
 	const MGOODSTYPE = mDATA.goodsType;
 	const MLOCATIONS = mDATA.locations;
-
-	var config = {
+	const MBG = mDATA.bg;
+	let config = {
 		lang: "RU",
 		showMode: "off",
 		section: "mp_aboutGame"
@@ -30,6 +31,7 @@ window.onload = function() {
 		$('#mp_rules').hide();
 		$('#mp_quest').hide();
 		$('#mp_goods').hide();
+		$('#mp_advantage').hide();
 		$('#mp_heroes').hide();
 		$('#mp_location').hide();
 		let elemId = showElem.attr('id');
@@ -48,7 +50,10 @@ window.onload = function() {
 				$('#nav_header').html("| Задания");
 				break;
 			case 'mp_goods':
-				$('#nav_header').html("| Предметы");
+				$('#nav_header').html("| Сокровища");
+				break;
+			case 'mp_advantage':
+				$('#nav_header').html("| Преимущества");
 				break;
 			case 'mp_heroes':
 				$('#nav_header').html("| Герои");
@@ -88,7 +93,10 @@ window.onload = function() {
 	});	
 	$('#bttn_goods').on('click', function(){
 		add_hideAll_MP($('#mp_goods'));
-	});	
+	});
+	$('#bttn_advantage').on('click', function(){
+		add_hideAll_MP($('#mp_advantage'));
+	});
 	$('#bttn_heroes').on('click', function(){
 		add_hideAll_MP($('#mp_heroes'));
 	});
@@ -98,6 +106,13 @@ window.onload = function() {
 
 	function byField(fieldName) {
 		return (a, b) => a[fieldName] < b[fieldName] ? 1 : -1;
+	};
+
+	// наполнение "Состав игры"
+	for (var i = MBG.content.length - 1; i >= 0; i--) {
+		let li = document.createElement("li");
+		li.appendChild(document.createTextNode(MBG.content[i]));
+		document.getElementById('bgcontent').append(li);
 	};
 
 	// наполнение списка героев для выбора
@@ -378,4 +393,54 @@ window.onload = function() {
 	$('#location_name').change(function(){
     	handleLocationChange();
     });
+
+    // наполняем форму выбора Преимущества
+    let advantagePrepData = [];
+    for (var i = dopsKeyList.length - 1; i >= 0; i--) {
+    	let localRes = [];
+    	for (var j = MADVANTAGE.length - 1; j >= 0; j--) {
+    		if (MADVANTAGE[j].dop == dopsKeyList[i]) {
+    			localRes[localRes.length] = MADVANTAGE[j];
+    		};
+    	};
+    	advantagePrepData[i] = {
+    		id: dopsKeyList[i],
+    		dopName: MDOPS[(dopsKeyList[i])],
+    		lList: localRes
+    	};
+    };
+    for (var i = advantagePrepData.length - 1; i >= 0; i--) {
+    	let newOptgrStart = '<optgroup label="' + advantagePrepData[i].dopName + '">';
+    	for (var j = (advantagePrepData[i].lList).length - 1; j >= 0; j--) {
+    		let lSortList = advantagePrepData[i].lList.sort(byField('name'));
+    		newOptgrStart += "<option value='" + lSortList[j].id + "'>" + lSortList[j].name + "</option>";			
+    	};
+    	let newOptgrEnd = '</optgroup>';
+    	$('#advantage_name').append(jQuery(newOptgrStart), jQuery(newOptgrEnd));
+    };
+    // функция выбора преимущества
+    function handleAdvantageChange() {
+    	let selectAdvantageId = $('#advantage_name').val();
+    	let advantageData = {};
+    	for (var i = MADVANTAGE.length - 1; i >= 0; i--) {
+    		if (MADVANTAGE[i].id == selectAdvantageId) {
+    			advantageData = MADVANTAGE[i];
+    		};
+    	};
+    	$('.advantage_strName').html('«' + advantageData.name + '»');
+    	$("#advantage_face_img").attr("src", ("./img/advant_" + selectAdvantageId + ".jpeg"));
+    	$('#advantage_priceVal').html(advantageData.price);
+    	$('#advantage_phazeVal').html(advantageData.phaze);
+    	$('#advantage_gtypeVal').html(advantageData.gtype);
+    	$('#advantage_durationVal').html(advantageData.duration);
+    	$('.advantage_text').html(advantageData.text);
+    	
+    };
+
+    handleAdvantageChange();
+    // обрабатываем выбор локации
+	$('#advantage_name').change(function(){
+    	handleAdvantageChange();
+    });
+
 };
