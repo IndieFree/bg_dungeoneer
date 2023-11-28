@@ -313,3 +313,33 @@ body {
 .location_risk {
 	color: red;
 }
+
+#mp_advantage form {
+   padding: 3px;
+   border-radius: 5px;
+   background: #3C3D41;
+   color: white;
+}
+
+#mp_advantage table {
+	border: 0;
+	width: 100%;
+}
+
+#mp_advantage td {
+	padding: 3px;
+   	border-radius: 5px;
+   	background: #3C3D41;
+}
+
+#advantage_face_img {
+	min-width: 100%;
+	max-width: 100%;
+	border-radius: 10px;
+}
+
+.advantage_strName, .advantage_price, #advantage_priceVal, .advantage_phaze, #advantage_phazeVal, .advantage_gtype, #advantage_gtypeVal, .advantage_duration, #advantage_durationVal, .advantage_text {
+	color: white;
+}
+
+
