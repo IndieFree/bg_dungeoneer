@@ -1,3 +1,4 @@
+"use strict";
 var mDATA = mainData;
 
 function ShowLog(strVal, evalVal) {
@@ -6,14 +7,13 @@ function ShowLog(strVal, evalVal) {
 };
 
 window.onload = function() {
-	const MDops = mDATA.dops;
-	const MHero = mDATA.hero;
-	const MQuest = mDATA.quest;
-	const MGoods = mDATA.goods;
-	const MGoodsType = mDATA.goodsType;
-	const MLocations = mDATA.locations;
+	const MDOPS = mDATA.dops;
+	const MHERO = mDATA.hero;
+	const MQUEST = mDATA.quest;
+	const MGOODS = mDATA.goods;
+	const MGOODSTYPE = mDATA.goodsType;
+	const MLOCATIONS = mDATA.locations;
 
-	var langList = ["RU", "ENG"];
 	var config = {
 		lang: "RU",
 		showMode: "off",
@@ -33,22 +33,30 @@ window.onload = function() {
 		$('#mp_heroes').hide();
 		$('#mp_location').hide();
 		let elemId = showElem.attr('id');
-		if (elemId == 'mp_aboutGame') {
-			$('#nav_header').html("| Об игре");
-		} else if (elemId == 'mp_helper') {
-			$('#nav_header').html("| Карта помощи");
-		} else if (elemId == 'mp_rules') {
-			$('#nav_header').html("| Правила игры");
-		} else if (elemId == 'mp_quest') {
-			$('#nav_header').html("| Задания");
-		} else if (elemId == 'mp_goods') {
-			$('#nav_header').html("| Предметы");
-		} else if (elemId == 'mp_heroes') {
-			$('#nav_header').html("| Герои");
-		} else {
-			$('#nav_header').html("| Локации");
+
+		switch (elemId) {
+			case 'mp_aboutGame':
+				$('#nav_header').html("| Об игре");
+				break;
+			case 'mp_helper':
+				$('#nav_header').html("| Карта помощи");
+				break;
+			case 'mp_rules':
+				$('#nav_header').html("| Правила игры");
+				break;
+			case 'mp_quest':
+				$('#nav_header').html("| Задания");
+				break;
+			case 'mp_goods':
+				$('#nav_header').html("| Предметы");
+				break;
+			case 'mp_heroes':
+				$('#nav_header').html("| Герои");
+				break;
+			default:
+				$('#nav_header').html("| Локации");
 		};
-		
+
 		showElem.show();
 	};	
 
@@ -93,7 +101,7 @@ window.onload = function() {
 	};
 
 	// наполнение списка героев для выбора
-	let heroSortList = MHero.sort(byField('name'));
+	let heroSortList = MHERO.sort(byField('name'));
 	for (var i = heroSortList.length - 1; i >= 0; i--) {
 		let newOption = new Option(heroSortList[i].name, heroSortList[i].id);
   		document.getElementById('heroes').append(newOption);
@@ -104,9 +112,9 @@ window.onload = function() {
 		let selectHeroId = $('#heroes').val();
 		let selectHeroData;
 		
-		for (var i = MHero.length - 1; i >= 0; i--) {
-			if (MHero[i].id == selectHeroId) {
-				selectHeroData = MHero[i];
+		for (var i = MHERO.length - 1; i >= 0; i--) {
+			if (MHERO[i].id == selectHeroId) {
+				selectHeroData = MHERO[i];
 			};
 		};
 
@@ -128,7 +136,7 @@ window.onload = function() {
 		let spell_val = selectHeroData.spell;
 		let limG_val = selectHeroData.limG;
 		let limM_val = selectHeroData.limM;
-		$(".hero_dopName").html("«"+ MDops[dopId] + "»");
+		$(".hero_dopName").html("«"+ MDOPS[dopId] + "»");
 		$(".hero_race").html(race_val[0] + "<br>" + race_val[1]);
 		$(".hero_spell").html(spell_val);
 		$("#hero_slotG").html(limG_val);
@@ -140,9 +148,6 @@ window.onload = function() {
     $('#heroes').change(function(){
     	handleHeroChange();
     });
-    
-    // $('heroes').change(handleHeroChange());
-    // $('.heroSelect_button').on('click', handleHeroChange());
 
     // скрыть/показать раздел правил
     function chngShowParamRulPart(targetVal){
@@ -191,13 +196,13 @@ window.onload = function() {
 	});
 
 	// наполняем форму выбора заданий
-	let questsKeyList = Object.keys(MQuest);
+	let questsKeyList = Object.keys(MQUEST);
 	let questsPrepData = [];
 	for (var i = questsKeyList.length - 1; i >= 0; i--) {
 		questsPrepData[i] = {
 			id: questsKeyList[i],
-			name: MDops[((questsKeyList[i]).split('d_'))[1]],
-			qList: MQuest[questsKeyList[i]]
+			name: MDOPS[((questsKeyList[i]).split('d_'))[1]],
+			qList: MQUEST[questsKeyList[i]]
 		};
 	};
 	for (var i = questsPrepData.length - 1; i >= 0; i--) {
@@ -216,9 +221,9 @@ window.onload = function() {
     	let selectQuestId = selectQuestVal.split('_')[0];
     	let dopId = selectQuestVal.split('_')[2];
     	let questData = {};
-    	for (var i = MQuest['d_' + dopId].length - 1; i >= 0; i--) {
-    		if (MQuest['d_' + dopId][i].id == selectQuestId) {
-    			questData = MQuest['d_' + dopId][i];
+    	for (var i = MQUEST['d_' + dopId].length - 1; i >= 0; i--) {
+    		if (MQUEST['d_' + dopId][i].id == selectQuestId) {
+    			questData = MQUEST['d_' + dopId][i];
     		};    		
     	};
     	$('#quests_category').html('Категория: «' + questData.category + '»');
@@ -258,9 +263,10 @@ window.onload = function() {
     });
 
 	// наполняем форму выбора "типа" предметов на странице просмотра предметов
+	let goodsKeyList = Object.keys(MGOODSTYPE);
 	let goodsTypeList = [];
-	for (var i = Object.keys(MGoodsType).length - 1; i >= 0; i--) {
-		goodsTypeList[i] = {id: Object.keys(MGoodsType)[i], name: MGoodsType[Object.keys(MGoodsType)[i]]};
+	for (var i = goodsKeyList.length - 1; i >= 0; i--) {
+		goodsTypeList[i] = {id: goodsKeyList[i], name: MGOODSTYPE[goodsKeyList[i]]};
 	};
 	let goodsTypeSortList = goodsTypeList.sort(byField('name'));
 	for (var i = goodsTypeSortList.length - 1; i >= 0; i--) {
@@ -273,8 +279,8 @@ window.onload = function() {
 		$('#goods_select').empty();
 		let selectGoodsTypeId = $('#goods_type').val();
 		let goodsList = [];
-		for (var i = MGoods.length - 1; i >= 0; i--) {
-			goodsList[i] = {id: MGoods[i].id, name: MGoods[i].name};
+		for (var i = MGOODS.length - 1; i >= 0; i--) {
+			goodsList[i] = {id: MGOODS[i].id, name: MGOODS[i].name};
 		};
 		let sortGoodsList = goodsList.sort(byField('name'));
 		for (var i = sortGoodsList.length - 1; i >= 0; i--) {
@@ -295,14 +301,14 @@ window.onload = function() {
     	let selectGoodsId = $('#goods_select').val();
     	let typeId = $('#goods_type').val();
     	let goodsData = {};
-    	for (var i = MGoods.length - 1; i >= 0; i--) {
-    		if (MGoods[i].id == selectGoodsId) {
-    			goodsData = MGoods[i];
+    	for (var i = MGOODS.length - 1; i >= 0; i--) {
+    		if (MGOODS[i].id == selectGoodsId) {
+    			goodsData = MGOODS[i];
     		};    		
     	};
     	let goodsName = goodsData.name;
-    	$('#goods_name').html(goodsName + '<br><small>(' + MGoodsType[typeId] + ')</small>');
-    	$('#goods_dop_name').html('Дополнение: «' + MDops[goodsData.dop] + '»');
+    	$('#goods_name').html(goodsName + '<br><small>(' + MGOODSTYPE[typeId] + ')</small>');
+    	$('#goods_dop_name').html('Дополнение: «' + MDOPS[goodsData.dop] + '»');
     	$('#goods_text').html(goodsData.text);
     	$('#goods_face_img').attr("src", ("./img/goods_" + selectGoodsId + ".jpeg"));
     	$('#goods_price').html(goodsData.price);
@@ -320,18 +326,18 @@ window.onload = function() {
     });
 
     // наполняем форму выбора локации
-    let dopsKeyList = Object.keys(MDops);
+    let dopsKeyList = Object.keys(MDOPS);
     let locationsPrepData = [];
     for (var i = dopsKeyList.length - 1; i >= 0; i--) {
     	let localRes = [];
-    	for (var j = MLocations.length - 1; j >= 0; j--) {
-    		if (MLocations[j].dop == dopsKeyList[i]) {
-    			localRes[localRes.length] = MLocations[j];
+    	for (var j = MLOCATIONS.length - 1; j >= 0; j--) {
+    		if (MLOCATIONS[j].dop == dopsKeyList[i]) {
+    			localRes[localRes.length] = MLOCATIONS[j];
     		};
     	};
     	locationsPrepData[i] = {
     		id: dopsKeyList[i],
-    		dopName: MDops[(dopsKeyList[i])],
+    		dopName: MDOPS[(dopsKeyList[i])],
     		lList: localRes
     	};
     };
@@ -349,16 +355,22 @@ window.onload = function() {
     function handleLocationChange() {
     	let selectLocationId = $('#location_name').val();
     	let locationData = {};
-    	for (var i = MLocations.length - 1; i >= 0; i--) {
-    		if (MLocations[i].id == selectLocationId) {
-    			locationData = MLocations[i];
+    	for (var i = MLOCATIONS.length - 1; i >= 0; i--) {
+    		if (MLOCATIONS[i].id == selectLocationId) {
+    			locationData = MLOCATIONS[i];
     		};
+    	};
+    	let locationType = locationData.type;
+    	let locationTypeStr = '';
+    	for (var i = locationType.length - 1; i >= 0; i--) {
+    		locationTypeStr = (locationTypeStr + locationType[i] + '<br>');
     	};
     	$('.location_str_name').html('«' + locationData.name + '»');
     	$("#location_face_img").attr("src", ("./img/location_" + selectLocationId + ".jpeg"));
     	$('#location_honor').html(locationData.honor);
     	$('#location_risk').html(locationData.risk);
     	$('.location_text').html(locationData.text);
+    	$('#location_typeText').html(locationTypeStr);
     };
 
     handleLocationChange();
